@@ -64,10 +64,36 @@ function LinkedList() {
 		}
 	};
 	this.deleteNode = function(name) {
+		if (this.isEmpty() === true) {
+			console.log("List was empty");
+			return;
+		}
+		var temp = top;
+		if (temp.name === name) { // if first node is match
+			top = temp.next;	//move top pointer
+			delete temp;
+			return;
+		}else {
+			while(temp != null) {
+				if(temp.next.name === name) {
+					temp.next = temp.next.next;
+					var deleteNode = temp.next;
+					delete deleteNode;
+					return;
+				}else { // keep iterating through list
+					temp = temp.next;
+				}
+			}
+		}
+		console.log("No matching nodes, nothing was deleted");
 		return;
 	};
 	this.isEmpty = function(number) {
-
+		if (top === null) {
+			return true;
+		}else {
+			return false;
+		}
 	};
 }
 
@@ -75,4 +101,5 @@ var l = new LinkedList();
 l.add("Ingvildk", uuid());
 l.add("Kayla",uuid());
 l.add("Maria",uuid());
+l.deleteNode("Kayla");
 l.print();
