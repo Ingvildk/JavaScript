@@ -1,3 +1,5 @@
+var uuid = require('uuid-v4');
+
 function checkForDuplicates(a, b) {
 	console.log("hh");
 }
@@ -24,18 +26,18 @@ function x() {
 
 //
 
-function Node() {
-	var next = null;
-	var name = "";
+function Node(name,id) {
+	this.next = null;
+	this.name = name;
+	this.id = id;
 }
 
 function LinkedList() {
 	var top = null;
-	this.add = function(Lname) {
+	this.add = function(Lname, Lid) {
+		var newNode = new Node(Lname,Lid); // create a new node object
 		if (top == null) { // if zero nodes in list
-			var newNode = new Node; // create a new node object
 			top = newNode; // make top point to newNode
-			newNode.name = Lname;
 			newNode.next = null;
 			return;
 		} else {	// if more than zero nodes in list
@@ -43,9 +45,7 @@ function LinkedList() {
 			while(temp.next != null) { //keep looping until we get to the last node
 				temp = temp.next;
 			}
-			var newNode = new Node;
 			temp.next = newNode;
-			newNode.name = Lname;
 			newNode.next = null;
 			return;
 		}
@@ -57,14 +57,14 @@ function LinkedList() {
 			return;
 		} else { // there do exists elements in linked list
 			while (temp != null) { //while temp is not an empty node
-				console.log(temp.name); //print out node name
+				console.log(temp.name + "  "+ temp.id); //print out node name and id
 				temp = temp.next;
 			}
 			return;
 		}
-	}
-	this.deletePost = function(numb) {
-
+	};
+	this.deleteNode = function(name) {
+		return;
 	};
 	this.isEmpty = function(number) {
 
@@ -72,7 +72,7 @@ function LinkedList() {
 }
 
 var l = new LinkedList();
-l.add("Ingvildk");
-l.add("Kayla");
-l.add("Maria");
+l.add("Ingvildk", uuid());
+l.add("Kayla",uuid());
+l.add("Maria",uuid());
 l.print();
