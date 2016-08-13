@@ -14,7 +14,17 @@ var obj = {
 		}
 	}
 };
-
+/*
+	console.log() call, getFullname() is invoked as a function of the obj.prop object.
+	So, the context refers to the latter and the function returns the fullname property of this object.
+*/
 console.log(obj.prop.getFullname()); // 'Aurelio De Rosa'
+/*
+	On the contrary, when getFullname() is assigned to the test variable, the context refers to the global object (window). 
+  This happens because test is implicitly set as a property of the global object. For this reason, the function returns 
+  the value of a property called fullname of window, which in this case is the one the code set in the first line of the snippet.
+*/
 var test = obj.prop.getFullname;
 console.log(test()); // 'John Doe' 
+
+//QUESTION: 
