@@ -27,4 +27,30 @@ console.log(obj.prop.getFullname()); // 'Aurelio De Rosa'
 var test = obj.prop.getFullname;
 console.log(test()); // 'John Doe' 
 
-//QUESTION: 
+/*
+QUESTION: 
+  Fix the previous question’s issue so that 
+  the last console.log() prints Aurelio De Rosa.
+*/
+
+var fullname = 'John Doe';
+var obj = {
+	fullname: 'Colin Ihrig',
+	prop: {
+		fullname: 'Aurelio De Rosa',
+		getFullname: function() {
+			return this.fullname;
+		}
+	}
+};
+var test = obj.prop.getFullname;
+console.log(test.call(obj.prop)); //
+
+/*
+EXPLANATION:
+	How does the the function call work
+	the call takes a parameter which is the thisArg.
+	'thisArg' - this is the argument that gives the function a context; 
+	it determines the value of the JavaScript keyword this
+	call sets obj.prop to be 'this' when calling the getFullname function 
+*/
