@@ -15,6 +15,6 @@ var obj = {
 	}
 };
 
-console.log(obj.prop.getFullname());
+console.log(obj.prop.getFullname()); // 'Aurelio De Rosa'
 var test = obj.prop.getFullname;
-console.log(test());
+console.log(test()); // 'John Doe' 
