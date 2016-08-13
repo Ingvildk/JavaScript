@@ -1,3 +1,9 @@
+/*
+The reason is that the context of a function, 
+what is referred with the this keyword, 
+in JavaScript depends on how a function is invoked,
+not how it’s defined.
+*/
 var fullname = 'John Doe';
 var obj = {
 	fullname: 'Colin Ihrig',
